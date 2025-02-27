@@ -1,0 +1,21 @@
+.menu {
+    background-color: lightgray;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+.menu p {
+    margin-right: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: darkslategray;
+    margin: 0 10px;
+}
+
+.menu a:hover {
+    color: darkcyan;
+}

@@ -1,0 +1,9 @@
+.home {
+    background-color: white;
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+.home h2 {
+    color: darkslategray;
+}

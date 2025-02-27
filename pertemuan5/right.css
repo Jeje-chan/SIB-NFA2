@@ -1,0 +1,32 @@
+.right {
+    background-color: lightyellow;
+    padding: 20px;
+}
+
+.right fieldset {
+    border: 2px solid darkgoldenrod;
+    border-radius: 5px;
+}
+
+.right legend {
+    font-weight: bold;
+    color: darkgoldenrod;
+}
+
+.right ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.right li {
+    margin-bottom: 5px;
+}
+
+.right a {
+    text-decoration: none;
+    color: darkslategray;
+}
+
+.right a:hover {
+    color: darkgoldenrod;
+}

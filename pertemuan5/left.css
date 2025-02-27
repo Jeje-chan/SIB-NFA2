@@ -1,0 +1,32 @@
+.left {
+    background-color: lightyellow;
+    padding: 20px;
+}
+
+.left fieldset {
+    border: 2px solid darkgreen;
+    border-radius: 5px;
+}
+
+.left legend {
+    font-weight: bold;
+    color: darkgreen;
+}
+
+.left ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.left li {
+    margin-bottom: 5px;
+}
+
+.left a {
+    text-decoration: none;
+    color: darkslategray;
+}
+
+.left a:hover {
+    color: darkolivegreen;
+}

@@ -1,0 +1,35 @@
+.gallery {
+    background-color: white;
+}
+
+.gallery h2 {
+    text-align: center;
+    color: darkslategray;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-item {
+    text-align: center;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.gallery-item p {
+    padding: 10px;
+    margin: 0;
+    background-color: #f9f9f9;
+}
