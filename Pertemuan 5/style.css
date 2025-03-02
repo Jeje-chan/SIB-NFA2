@@ -1,0 +1,59 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#header {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 20px 0;
+}
+
+#nav {
+    background-color: #e0e0e0;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#nav a {
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+#content {
+    display: flex;
+    padding: 20px 0;
+}
+
+#sidebar-left, #sidebar-right {
+    width: 20%;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+#main-content {
+    width: 60%;
+    padding: 20px;
+}
+
+#footer {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Tambahan styling untuk kotak pada sidebar */
+#sidebar-left, #sidebar-right {
+    border: 2px solid #ddd;
+}
+
+#sidebar-right {
+    border-color: #ffcc00; /* Warna kuning */
+}
