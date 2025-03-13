@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luas Bangun Datar</title>
+</head>
+<body>
+    <h2>Luas Bangun Datar</h2>
+
+    <h3>Persegi Panjang</h3>
+    Panjang: <input id="panjang" type="number"> Lebar: <input id="lebar" type="number">
+    <button onclick="hitungPersegiPanjang()">Hitung</button>
+    <p id="hasilPersegiPanjang"></p>
+
+    <h3>Bujur Sangkar</h3>
+    Sisi: <input id="sisi" type="number">
+    <button onclick="hitungBujurSangkar()">Hitung</button>
+    <p id="hasilBujurSangkar"></p>
+
+    <h3>Segitiga</h3>
+    Alas: <input id="alas" type="number"> Tinggi: <input id="tinggi" type="number">
+    <button onclick="hitungSegitiga()">Hitung</button>
+    <p id="hasilSegitiga"></p>
+
+    <script>
+        // Fungsi untuk menghitung luas persegi panjang
+        function hitungPersegiPanjang() {
+            const panjang = parseFloat(document.getElementById("panjang").value);
+            const lebar = parseFloat(document.getElementById("lebar").value);
+            const hasil = panjang * lebar;
+            document.getElementById("hasilPersegiPanjang").innerText = `Luas Persegi Panjang: ${hasil} cm²`;
+        }
+
+        // Fungsi untuk menghitung luas bujur sangkar
+        function hitungBujurSangkar() {
+            const sisi = parseFloat(document.getElementById("sisi").value);
+            const hasil = sisi * sisi;
+            document.getElementById("hasilBujurSangkar").innerText = `Luas Bujur Sangkar: ${hasil} cm²`;
+        }
+
+        // Fungsi untuk menghitung luas segitiga
+        function hitungSegitiga() {
+            const alas = parseFloat(document.getElementById("alas").value);
+            const tinggi = parseFloat(document.getElementById("tinggi").value);
+            const hasil = 0.5 * alas * tinggi;
+            document.getElementById("hasilSegitiga").innerText = `Luas Segitiga: ${hasil} cm²`;
+        }
+    </script>
+</body>
+</html>
