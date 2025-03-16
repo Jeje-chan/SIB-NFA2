@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pegawai</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            color: palevioletred;
+        }
+
+        /* style Form */
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        form input, form select, form button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        form button {
+            background-color: palevioletred;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: plum;
+        }
+
+        /* Style Tabel */
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        thead {
+            background-color: plum;
+            color: white;
+        }
+
+        tfoot {
+            background-color: #e8f5e9;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Data Pegawai</h2>
+    
+    <!-- Form Input Data Pegawai -->
+    <form id="formPegawai">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" placeholder="Masukkan nama" required>
+        
+        <label for="umur">Umur:</label>
+        <input type="number" id="umur" placeholder="Masukkan umur" required>
+        
+        <label for="jabatan">Jabatan:</label>
+        <select id="jabatan">
+            <option value="Manajer">Manajer</option>
+            <option value="Asisten Manajer">Asisten Manajer</option>
+            <option value="Staff">Staff</option>
+        </select>
+        
+        <label for="status">Status:</label>
+        <select id="status">
+            <option value="Menikah">Menikah</option>
+            <option value="Belum Menikah">Belum Menikah</option>
+        </select>
+        
+        <button type="button" onclick="tambahPegawai()">Tambah Pegawai</button>
+    </form>
+    
+    <!-- Tabel Data Pegawai -->
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Pegawai</th>
+                <th>Umur</th>
+                <th>Jabatan</th>
+                <th>Status</th>
+                <th>Gaji Pokok</th>
+                <th>Tunjangan Jabatan</th>
+                <th>BPJS</th>
+                <th>Tunjangan Keluarga</th>
+                <th>Total Gaji</th>
+            </tr>
+        </thead>
+        <tbody id="dataPegawai"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8">Total Gaji Keseluruhan</td>
+                <td id="totalKeseluruhan">Rp 0</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        let totalKeseluruhan = 0;
+
+        function tambahPegawai() {
+            const nama = document.getElementById('nama').value;
+            const umur = document.getElementById('umur').value;
+            const jabatan = document.getElementById('jabatan').value;
+            const status = document.getElementById('status').value;
+
+            const gapok = jabatan === "Manajer" ? 15000000 :
+                          jabatan === "Asisten Manajer" ? 10000000 : 5000000;
+            const tunjanganJabatan = gapok * 0.15;
+            const bpjs = gapok * 0.10;
+            const tunjanganKeluarga = status === "Menikah" ? gapok * 0.20 : 0;
+            const totalGaji = gapok + tunjanganJabatan + tunjanganKeluarga - bpjs;
+
+            totalKeseluruhan += totalGaji;
+
+            const row = `<tr>
+                <td>${nama}</td>
+                <td>${umur} Tahun</td>
+                <td>${jabatan}</td>
+                <td>${status}</td>
+                <td>Rp ${gapok.toLocaleString()}</td>
+                <td>Rp ${tunjanganJabatan.toLocaleString()}</td>
+                <td>Rp ${bpjs.toLocaleString()}</td>
+                <td>Rp ${tunjanganKeluarga.toLocaleString()}</td>
+                <td>Rp ${totalGaji.toLocaleString()}</td>
+            </tr>`;
+            document.getElementById('dataPegawai').insertAdjacentHTML('beforeend', row);
+
+            document.getElementById('totalKeseluruhan').textContent = "Rp " + totalKeseluruhan.toLocaleString();
+
+            document.getElementById('formPegawai').reset();
+        }
+    </script>
+</body>
+</html>
