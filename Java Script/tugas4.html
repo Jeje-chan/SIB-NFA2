@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Manajemen Transportasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, select, button {
+            margin: 5px 0;
+            padding: 8px;
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #ddd;
+        }
+        button {
+            background-color: palevioletred;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <h2>Sistem Manajemen Transportasi</h2>
+
+    <!-- Form Tambah Pelanggan -->
+    <h3>Tambah Pelanggan</h3>
+    <form id="formPelanggan" onsubmit="return false;">
+        <label for="namaPelanggan">Nama:</label>
+        <input type="text" id="namaPelanggan" placeholder="Masukkan nama" required>
+        
+        <label for="nomorTelepon">Nomor Telepon:</label>
+        <input type="text" id="nomorTelepon" placeholder="Masukkan nomor telepon" required>
+        
+        <label for="kendaraanDisewa">Kendaraan:</label>
+        <select id="kendaraanDisewa">
+            <option value="Mobil">Mobil</option>
+            <option value="Motor">Motor</option>
+            <option value="Bus">Bus</option>
+        </select>
+        
+        <button onclick="tambahPelanggan()">Tambah Pelanggan</button>
+    </form>
+
+    <!-- Daftar Pelanggan -->
+    <h3>Daftar Pelanggan</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Nomor Telepon</th>
+                <th>Kendaraan</th>
+            </tr>
+        </thead>
+        <tbody id="dataPelanggan"></tbody>
+    </table>
+
+    <script>
+        // Class Pelanggan
+        class Pelanggan {
+            constructor(nama, nomorTelepon, kendaraanDisewa) {
+                this.nama = nama;
+                this.nomorTelepon = nomorTelepon;
+                this.kendaraanDisewa = kendaraanDisewa;
+            }
+        }
+
+        // Sistem Manajemen Transportasi
+        class SistemManajemenTransportasi {
+            constructor() {
+                this.daftarPelanggan = []; // Array untuk menyimpan pelanggan
+            }
+
+            // Metode untuk mencatat transaksi penyewaan kendaraan
+            tambahPelanggan(nama, nomorTelepon, kendaraanDisewa) {
+                const pelangganBaru = new Pelanggan(nama, nomorTelepon, kendaraanDisewa);
+                this.daftarPelanggan.push(pelangganBaru);
+                this.tampilkanDaftarPelanggan();
+            }
+
+            // Metode untuk menampilkan daftar pelanggan
+            tampilkanDaftarPelanggan() {
+                const tabel = document.getElementById("dataPelanggan");
+                tabel.innerHTML = ""; // Bersihkan data lama
+                this.daftarPelanggan.forEach(pelanggan => {
+                    const row = `<tr>
+                        <td>${pelanggan.nama}</td>
+                        <td>${pelanggan.nomorTelepon}</td>
+                        <td>${pelanggan.kendaraanDisewa}</td>
+                    </tr>`;
+                    tabel.insertAdjacentHTML("beforeend", row);
+                });
+            }
+        }
+
+        // Membuat instance sistem transportasi
+        const sistemTransportasi = new SistemManajemenTransportasi();
+
+        // Fungsi untuk menambahkan pelanggan
+        function tambahPelanggan() {
+            const nama = document.getElementById("namaPelanggan").value;
+            const nomorTelepon = document.getElementById("nomorTelepon").value;
+            const kendaraanDisewa = document.getElementById("kendaraanDisewa").value;
+
+            if (nama && nomorTelepon && kendaraanDisewa) {
+                sistemTransportasi.tambahPelanggan(nama, nomorTelepon, kendaraanDisewa);
+                document.getElementById("formPelanggan").reset(); // Bersihkan form
+            } else {
+                alert("Data tidak lengkap! Pastikan semua field terisi.");
+            }
+        }
+    </script>
+</body>
+</html>
