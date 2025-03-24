@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Produk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: palevioletred;
+            color: #fff;
+        }
+        button {
+            padding: 8px 12px;
+            margin: 5px;
+            background-color: palevioletred;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            width: calc(100% - 30px);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manajemen Produk</h1>
+    <div class="container">
+        <h3>Tambah Produk</h3>
+        <input type="text" id="nama" placeholder="Nama Produk" />
+        <input type="number" id="harga" placeholder="Harga Produk" />
+        <button onclick="eventHandler.tambah()">Tambah Produk</button>
+
+        <h3>Daftar Produk</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Harga</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="productList"></tbody>
+        </table>
+    </div>
+
+    <script>
+        let produkList = [
+            { id: 1, nama: "Laptop", harga: 12000000 },
+            { id: 2, nama: "Smartphone", harga: 5000000 },
+            { id: 3, nama: "Tablet", harga: 7000000 },
+            { id: 4, nama: "TV", harga: 10000000},
+            { id: 5, nama: "AC", harga: 5000000}
+        ];
+
+        function tambahProduk() {
+            const nama = document.getElementById("nama").value;
+            const harga = parseInt(document.getElementById("harga").value);
+            if (nama && !isNaN(harga)) {
+                const id = produkList.length ? produkList[produkList.length - 1].id + 1 : 1;
+                produkList.push({ id, nama, harga });
+                alert(`Produk "${nama}" berhasil ditambahkan.`);
+                tampilkanProduk();
+                document.getElementById("nama").value = "";
+                document.getElementById("harga").value = "";
+            } else {
+                alert("Silakan isi nama dan harga dengan benar.");
+            }
+        }
+
+        function hapusProduk(id) {
+            produkList = produkList.filter(produk => produk.id !== id);
+            alert(`Produk dengan ID ${id} berhasil dihapus.`);
+            tampilkanProduk();
+        }
+
+        function tampilkanProduk() {
+            const productListElement = document.getElementById("productList");
+            productListElement.innerHTML = "";
+            produkList.forEach(({ id, nama, harga }) => {
+                const row = `
+                    <tr>
+                        <td>${id}</td>
+                        <td>${nama}</td>
+                        <td>Rp ${harga.toLocaleString()}</td>
+                        <td><button onclick="hapusProduk(${id})">Hapus</button></td>
+                    </tr>
+                `;
+                productListElement.innerHTML += row;
+            });
+        }
+
+        const eventHandler = {
+            tambah: tambahProduk
+        };
+
+        tampilkanProduk();
+    </script>
+</body>
+</html>
