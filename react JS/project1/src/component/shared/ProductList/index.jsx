@@ -1,86 +1,6 @@
+import books from "../../../Utils/books";
 export default function ProductList() {
-  const books = [
-   {
-      title: "Bumi",
-      description: "Buku ke-1 dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1383884931i/18759843.jpg",
-    },
-    {
-      title: "Bulan",
-      description: "Buku ke-2 dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1424060873i/24946146.jpg",
-    },
-    {
-      title: "Matahari",
-      description: "Buku ke-3 dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1467429925i/30827710.jpg",
-    },
-    {
-      title: "Bintang",
-      description: "Buku ke-4 dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1496315625i/35278713.jpg",
-    },
-    {
-      title: "Ceros & Batozar",
-      description: "Buku kelima dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1531141587i/40093229.jpg",
-    },
-    {
-      title: "Komet",
-      description: "Buku keenam dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1531141646i/40093223.jpg",
-    },
-    {
-      title: "Komet Minor",
-      description: "Buku ketujuh dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1547772157i/43604105.jpg",
-    },
-    {
-      title: "Selena",
-      description: "Buku kedelapan dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1584353767i/52416700.jpg",
-    },
-    {
-      title: "Nebula",
-      description: "Buku kesembilan dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1584354079i/52416779.jpg",
-    },
-    {
-      title: "Lumpu",
-      description: "Buku ke-10 dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1617605075i/57630650.jpg",
-    },
-    {
-      title: "Si Putih",
-      description: "Buku ketiga dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1617605426i/57630678.jpg",
-    },
-    {
-      title: "Bibi Gil",
-      description: "Buku ketiga dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1645071288i/60433729.jpg",
-    },
-    {
-      title: "SagaraS",
-      description: "Buku ketiga dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1645071633i/60433747.jpg",
-    },
-    {
-      title: "Matahari Minor",
-      description: "Buku ketiga dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1671447826i/63284537.jpg",
-    },
-    {
-      title: "ILY",
-      description: "Buku ketiga dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1703904631i/204506972.jpg",
-    },
-    {
-      title: "ILY",
-      description: "Buku ketiga dari series BUMI",
-      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1733117060i/222141705.jpg",
-    },
-  ];
+
 
   return (
     <section id="album" className="album py-5 bg-light">
@@ -138,13 +58,12 @@ export default function ProductList() {
                   <h5 className="card-title text-primary">{book.title}</h5>
                   <p className="card-text text-muted">{book.description}</p>
                   <div className="mt-auto d-flex justify-content-between align-items-center">
-                    <div className="d-flex">
-                      <button className="btn btn-sm btn-primary me-2">
-                        Detail
-                      </button>
-                      <button className="btn btn-sm btn-success">Pinjam</button>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className="btn-group">
+                        <p>{book.author}</p>
+                      </div>
                     </div>
-                    <small className="text-muted">Tersedia</small>
+                    <small className="text-muted">{book.year}</small>
                   </div>
                 </div>
               </div>
